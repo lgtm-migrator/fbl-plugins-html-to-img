@@ -1,0 +1,11 @@
+requires:
+  plugins:
+    '@fbl-plugins/html-to-img': '>=0.0.1'
+
+pipeline:
+  html->img:
+    from: 
+      folder: .
+      relativePath: index.html
+    img:
+      path: /tmp/test.png

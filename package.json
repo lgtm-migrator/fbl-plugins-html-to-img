@@ -1,0 +1,106 @@
+{
+  "name": "@fbl-plugins/html-to-img",
+  "version": "1.0.0",
+  "description": "fbl plugin to generate images based on HTML files",
+  "main": "dist/index.js",
+  "engines": {
+    "node": ">=8.12.0"
+  },
+  "scripts": {
+    "commit": "npx git-cz",
+    "commit:retry": "npx git-cz --retry",
+    "depcheck": "yarn-check",
+    "start": "node dist/src/cli.js",
+    "test": "nyc --reporter=html --reporter=text mocha --exit",
+    "build": "rimraf ./dist/ && tsc",
+    "lint": "tslint -c tslint.json 'src/**/*.ts' 'test/**/*.ts'",
+    "prettify": "prettier src/**/*.{md,ts,json} test/**/*.{md,ts,json} index.{md,ts,json} --write --config .prettierrc.yml && tslint 'src/**/*.ts' 'test/**/*.ts' 'index.ts' --fix",
+    "prepublishOnly": "npm run build && npm run lint"
+  },
+  "author": "FireBlink LTD",
+  "license": "MIT",
+  "dependencies": {
+    "http-server": "0.11.1",
+    "joi": "14.3.1",
+    "portfinder": "1.0.23",
+    "puppeteer": "1.19.0",
+    "typedi": "0.8.0"
+  },
+  "peerDependencies": {
+    "fbl": ">=1.9.0 <2.0.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "8.1.0",
+    "@commitlint/config-conventional": "8.1.0",
+    "@types/body-parser": "1.17.1",
+    "@types/chai": "4.2.1",
+    "@types/http-server": "0.10.0",
+    "@types/joi": "14.3.3",
+    "@types/node": "12.7.4",
+    "@types/puppeteer": "1.19.1",
+    "chai": "4.2.0",
+    "chai-as-promised": "7.1.1",
+    "commitizen": "4.0.3",
+    "fbl": "1.9.2",
+    "husky": "3.0.5",
+    "jsonlint": "1.6.3",
+    "lint-staged": "9.2.5",
+    "mocha": "6.2.0",
+    "mocha-typescript": "1.1.17",
+    "mochawesome": "4.1.0",
+    "nyc": "14.1.1",
+    "pngjs": "3.4.0",
+    "prettier": "1.18.2",
+    "rimraf": "3.0.0",
+    "source-map-support": "0.5.13",
+    "ts-node": "8.3.0",
+    "tslint": "5.19.0",
+    "tslint-config-prettier": "1.18.0",
+    "typescript": "3.6.2",
+    "yarn-check": "0.0.3"
+  },
+  "nyc": {
+    "cache": false,
+    "extension": [
+      ".ts"
+    ],
+    "exclude": [
+      "src/**/index.ts",
+      "src/interfaces/*.ts",
+      "**/*.d.ts",
+      "coverage/**"
+    ],
+    "check-coverage": true,
+    "per-file": true,
+    "lines": 100,
+    "statements": 100,
+    "functions": 100,
+    "branches": 100,
+    "include": [
+      "src",
+      "dist/src"
+    ]
+  },
+  "contributors": [
+    {
+      "name": "Vladyslav Tkachenko",
+      "email": "vlad@fireblink.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FireBlinkLTD/fbl-plugins-html-to-img.git"
+  },
+  "keywords": [
+    "fireblink",
+    "fbl",
+    "plugin",
+    "plugins",
+    "png",
+    "jpeg",
+    "image",
+    "html",
+    "renderer",
+    "generate"
+  ]
+}

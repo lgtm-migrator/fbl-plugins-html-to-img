@@ -214,7 +214,7 @@ class ImageRenderActionHandlerTestSuite {
         const actionHandler = new ImageRenderActionHandler();
         const processor = actionHandler.getProcessor(
             {
-                timeout: 5,
+                timeout: 30,
                 readyFunction: 'iAmReady',
                 viewport: {
                     height: 1,

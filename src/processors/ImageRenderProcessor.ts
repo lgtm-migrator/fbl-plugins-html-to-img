@@ -48,21 +48,14 @@ export class ImageRenderProcessor {
 
         let timeout = ((this.options.hasOwnProperty('timeout') && this.options.timeout) || 30) * 1000;
         const start = Date.now();
+
         await page.goto(`http://localhost:${this.port}/${this.relativePath}`, {
-            waitUntil: 'networkidle2',
+            waitUntil: 'networkidle0',
             timeout,
         });
 
         // calculate remaining timeout
         timeout = timeout - (Date.now() - start);
-
-        const onReady = async () => {
-            this.snapshot.log('-> rendering image');
-            await page.screenshot(this.imgOptions);
-            this.snapshot.log('-> closing browser');
-            await browser.close();
-            this.snapshot.log('<- browser closed');
-        };
 
         if (this.options.readyFunction) {
             let resolve: Function;
@@ -87,7 +80,11 @@ export class ImageRenderProcessor {
             await blockPromise;
         }
 
-        await onReady();
+        this.snapshot.log('-> rendering image');
+        await page.screenshot(this.imgOptions);
+        this.snapshot.log('-> closing browser');
+        await browser.close();
+        this.snapshot.log('<- browser closed');
     }
 
     private async startServer(): Promise<void> {

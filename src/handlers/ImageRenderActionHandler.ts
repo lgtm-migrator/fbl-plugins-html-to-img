@@ -14,19 +14,13 @@ import { ImageRenderProcessor } from '../processors';
 export class ImageRenderActionProcessor extends ActionProcessor {
     private static schema = Joi.object()
         .keys({
-            timeout: Joi.number()
-                .min(1)
-                .max(3600),
+            timeout: Joi.number().min(1).max(3600),
 
             readyFunction: Joi.string().min(1),
 
             viewport: Joi.object({
-                width: Joi.number()
-                    .integer()
-                    .min(1),
-                height: Joi.number()
-                    .integer()
-                    .min(1),
+                width: Joi.number().integer().min(1),
+                height: Joi.number().integer().min(1),
                 deviceScaleFactor: Joi.number().min(0),
                 isMobile: Joi.boolean(),
                 isLandscape: Joi.boolean(),
@@ -36,12 +30,8 @@ export class ImageRenderActionProcessor extends ActionProcessor {
             }),
 
             from: Joi.object({
-                folder: Joi.string()
-                    .required()
-                    .min(1),
-                relativePath: Joi.string()
-                    .required()
-                    .min(1),
+                folder: Joi.string().required().min(1),
+                relativePath: Joi.string().required().min(1),
             })
                 .required()
                 .options({
@@ -50,28 +40,18 @@ export class ImageRenderActionProcessor extends ActionProcessor {
                 }),
 
             img: Joi.object({
-                path: Joi.string()
-                    .required()
-                    .min(1),
+                path: Joi.string().required().min(1),
 
-                type: Joi.string()
-                    .allow('jpeg', 'png')
-                    .default('png'),
-                quality: Joi.number()
-                    .min(0)
-                    .max(100),
+                type: Joi.string().allow('jpeg', 'png').default('png'),
+                quality: Joi.number().min(0).max(100),
 
                 fullPage: Joi.boolean(),
 
                 clip: Joi.object({
                     x: Joi.number().required(),
                     y: Joi.number().required(),
-                    width: Joi.number()
-                        .required()
-                        .min(0),
-                    height: Joi.number()
-                        .required()
-                        .min(0),
+                    width: Joi.number().required().min(0),
+                    height: Joi.number().required().min(0),
                 }).options({
                     abortEarly: true,
                     allowUnknown: false,
@@ -79,9 +59,7 @@ export class ImageRenderActionProcessor extends ActionProcessor {
 
                 omitBackground: Joi.boolean(),
 
-                encoding: Joi.string()
-                    .allow('base64', 'binary')
-                    .default('binary'),
+                encoding: Joi.string().allow('base64', 'binary').default('binary'),
             })
                 .required()
                 .options({
@@ -98,7 +76,7 @@ export class ImageRenderActionProcessor extends ActionProcessor {
     /**
      * @inheritdoc
      */
-    getValidationSchema(): Joi.SchemaLike {
+    getValidationSchema(): Joi.Schema {
         return ImageRenderActionProcessor.schema;
     }
 

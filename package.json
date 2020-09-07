@@ -3,9 +3,6 @@
   "version": "1.1.0",
   "description": "fbl plugin to generate images based on HTML files",
   "main": "dist/index.js",
-  "engines": {
-    "node": ">=8.12.0"
-  },
   "scripts": {
     "commit": "npx git-cz",
     "commit:retry": "npx git-cz --retry",

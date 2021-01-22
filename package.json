@@ -11,8 +11,7 @@
     "test": "nyc --reporter=html --reporter=text mocha --exit",
     "build": "rimraf ./dist/ && tsc",
     "lint": "tslint -c tslint.json 'src/**/*.ts' 'test/**/*.ts'",
-    "prettify": "prettier src/**/*.{md,ts,json} test/**/*.{md,ts,json} index.{md,ts,json} --write --config .prettierrc.yml && tslint 'src/**/*.ts' 'test/**/*.ts' 'index.ts' --fix",
-    "prepublishOnly": "npm run build && npm run lint"
+    "prettify": "prettier src/**/*.{md,ts,json} test/**/*.{md,ts,json} index.{md,ts,json} --write --config .prettierrc.yml && tslint 'src/**/*.ts' 'test/**/*.ts' 'index.ts' --fix"
   },
   "author": "FireBlink LTD",
   "license": "MIT",

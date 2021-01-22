@@ -61,7 +61,7 @@ export class ImageRenderProcessor {
             let resolve: Function;
             let timer: NodeJS.Timeout;
 
-            const blockPromise = new Promise((res, rej) => {
+            const blockPromise = new Promise<void>((res, rej) => {
                 timer = setTimeout(() => {
                     rej(new ActionError('Timeout waiting for ready function call', 'TIMEOUT'));
                 }, timeout);
@@ -94,7 +94,7 @@ export class ImageRenderProcessor {
         app.use(express.static(this.targetFolder));
 
         this.snapshot.log(`-> starting server on port: ${port}`);
-        await new Promise<void>(res => {
+        await new Promise<void>((res) => {
             this.server = app.listen(port, res);
         });
         this.snapshot.log('<- server started');

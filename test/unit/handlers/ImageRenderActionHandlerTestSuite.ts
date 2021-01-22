@@ -1,5 +1,4 @@
 import { suite, test } from 'mocha-typescript';
-import { Container } from 'typedi';
 import { createReadStream } from 'fs';
 import { TempPathsRegistry, ContextUtil, ActionSnapshot } from 'fbl';
 import { strictEqual } from 'assert';
@@ -14,10 +13,7 @@ chai.use(chaiAsPromised);
 @suite()
 class ImageRenderActionHandlerTestSuite {
     async after(): Promise<void> {
-        const tempPathRegistry = Container.get(TempPathsRegistry);
-        await tempPathRegistry.cleanup();
-
-        Container.reset();
+        await TempPathsRegistry.instance.cleanup();
     }
 
     @test()
@@ -139,8 +135,7 @@ class ImageRenderActionHandlerTestSuite {
 
     @test()
     async generatePngFile() {
-        const tempPathRegistry = Container.get(TempPathsRegistry);
-        const imgPath = await tempPathRegistry.createTempFile();
+        const imgPath = await TempPathsRegistry.instance.createTempFile();
 
         const context = ContextUtil.generateEmptyContext();
         const snapshot = new ActionSnapshot('index.yml', 'id', {}, process.cwd(), 0, {});
@@ -174,8 +169,7 @@ class ImageRenderActionHandlerTestSuite {
 
     @test()
     async generateImgWithTimeout() {
-        const tempPathRegistry = Container.get(TempPathsRegistry);
-        const imgPath = await tempPathRegistry.createTempFile();
+        const imgPath = await TempPathsRegistry.instance.createTempFile();
 
         const context = ContextUtil.generateEmptyContext();
         const snapshot = new ActionSnapshot('index.yml', 'id', {}, process.cwd(), 0, {});
@@ -205,8 +199,7 @@ class ImageRenderActionHandlerTestSuite {
 
     @test()
     async generateImgWithReadyFunctionSetting() {
-        const tempPathRegistry = Container.get(TempPathsRegistry);
-        const imgPath = await tempPathRegistry.createTempFile();
+        const imgPath = await TempPathsRegistry.instance.createTempFile();
 
         const context = ContextUtil.generateEmptyContext();
         const snapshot = new ActionSnapshot('index.yml', 'id', {}, process.cwd(), 0, {});
@@ -247,7 +240,7 @@ class ImageRenderActionHandlerTestSuite {
                 .on('error', (err: Error) => {
                     return rej(err);
                 })
-                .on('parsed', function() {
+                .on('parsed', function () {
                     res(`rgb(${this.data[0]},${this.data[1]},${this.data[2]}):${this.width}x${this.height}`);
                 });
         });

@@ -2,7 +2,7 @@
 
 Allows to convert any HTML document into image inside [fbl](https://fbl.fireblink.com) flow.
 
-[![CircleCI](https://circleci.com/gh/FireBlinkLTD/fbl-plugins-html-to-img.svg?style=svg)](https://circleci.com/gh/FireBlinkLTD/fbl-plugins-html-to-img) 
+[![Tests](https://github.com/FireBlinkLTD/fbl-plugins-html-to-img/workflows/Tests/badge.svg)](https://github.com/FireBlinkLTD/fbl-plugins-html-to-img/actions?query=workflow%3ATests)
 [![Known Vulnerabilities](https://snyk.io/test/github/FireBlinkLTD/fbl-plugins-html-to-img/badge.svg)](https://snyk.io/test/github/FireBlinkLTD/fbl-plugins-html-to-img)
 [![codecov](https://codecov.io/gh/FireBlinkLTD/fbl-plugins-html-to-img/branch/master/graph/badge.svg)](https://codecov.io/gh/FireBlinkLTD/fbl-plugins-html-to-img)
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/FireBlinkLTD/fbl-plugins-html-to-img.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/FireBlinkLTD/fbl-plugins-html-to-img/alerts/)

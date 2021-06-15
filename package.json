@@ -1,6 +1,6 @@
 {
   "name": "@fbl-plugins/html-to-img",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "fbl plugin to generate images based on HTML files",
   "main": "dist/index.js",
   "scripts": {

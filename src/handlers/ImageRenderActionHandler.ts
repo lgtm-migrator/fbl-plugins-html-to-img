@@ -90,6 +90,15 @@ export class ImageRenderActionProcessor extends ActionProcessor {
         to.type = to.type || 'png';
         to.encoding = to.encoding || 'binary';
 
+        let viewport = this.options.viewport || {};
+        if (!viewport.width) {
+            viewport.width = 800;
+        }
+
+        if (!viewport.height) {
+            viewport.height = 600;
+        }
+
         const processor = new ImageRenderProcessor(
             FSUtil.getAbsolutePath(this.options.from.folder, this.snapshot.wd),
             this.options.from.relativePath,

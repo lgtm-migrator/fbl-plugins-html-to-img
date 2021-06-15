@@ -3,9 +3,20 @@
 <script>
     setTimeout(() => {
         throw new Error('Test');
-    }, 500); 
-    
-    setTimeout(() => {
+    }, 500);
+
+    const invokeReady = () => {
+      if (window.iAmReady) {
         window.iAmReady();
-    }, 1000);    
+        return;
+      }
+
+      setTimeout(() => {
+        invokeReady();
+      }, 1000);
+    }
+
+    setTimeout(() => {
+      invokeReady();
+    }, 1000);
 </script>

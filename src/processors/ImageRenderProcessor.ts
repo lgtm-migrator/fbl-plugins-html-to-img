@@ -15,8 +15,8 @@ export class ImageRenderProcessor {
         private snapshot: ActionSnapshot,
         private options: {
             viewport?: {
-                width?: number;
-                height?: number;
+                width: number;
+                height: number;
                 deviceScaleFactor?: number;
                 isMobile?: boolean;
                 isLandscape?: boolean;

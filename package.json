@@ -16,7 +16,7 @@
   "author": "FireBlink LTD",
   "license": "MIT",
   "dependencies": {
-    "express": "4.17.1",
+    "express": "4.17.2",
     "joi": "17.4.0",
     "portfinder": "1.0.28",
     "puppeteer": "10.0.0"

@@ -19,7 +19,7 @@
     "express": "4.17.1",
     "joi": "17.4.0",
     "portfinder": "1.0.28",
-    "puppeteer": "10.0.0"
+    "puppeteer": "13.3.0"
   },
   "peerDependencies": {
     "fbl": ">=1.15.1 <2.0.0"
